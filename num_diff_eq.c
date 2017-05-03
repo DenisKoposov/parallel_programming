@@ -9,13 +9,13 @@
     u(0, x) = x, 0 <= x <= 1
     u(t, 0) = t, 0 <= t <= 1
 */
-double f(double x, double t){ return t + x; }
+static inline double f(double x, double t){ return t + x; }
 /*
     u_l_k = u(t0 + l*tau, x0 + k*h)
     u_l_l_1 = u(t0 + l*tau, x0 + (k - 1)*h )
     u_next = u(t0 + (l + 1)*tau, x0 + k*h)
 */
-double u_next(double x, double t, double u_l_k, \
+static inline double u_next(double x, double t, double u_l_k, \
               double u_l_k_1, double tau, double h, double f, double a)
 {
     return u_l_k + tau * f - a * tau / h * (u_l_k - u_l_k_1);
